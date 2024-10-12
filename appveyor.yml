@@ -3,6 +3,10 @@ image: Visual Studio 2019
 
 environment:
   matrix:
+  - python: 313
+    arch: x86
+  - python: 313-x64
+    arch: x64
   - python: 312
     arch: x86
   - python: 312-x64
@@ -26,10 +30,6 @@ environment:
   - python: 37
     arch: x86
   - python: 37-x64
-    arch: x64
-  - python: 313
-    arch: x86
-  - python: 313-x64
     arch: x64
 
 install:

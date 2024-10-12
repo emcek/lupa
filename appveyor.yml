@@ -3,11 +3,10 @@ image: Visual Studio 2019
 
 environment:
   matrix:
-# Disable Py27 builds since they run into certificate issues when retrieving the LuaJIT git submodule.
-#  - python: 27
-#    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-#  - python: 27-x64
-#    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
+  - python: 313
+  - python: 313-x64
+  - python: 312
+  - python: 312-x64
   - python: 311
   - python: 311-x64
   - python: 310
@@ -18,10 +17,6 @@ environment:
   - python: 38-x64
   - python: 37
   - python: 37-x64
-  - python: 36
-  - python: 36-x64
-  - python: 35
-  - python: 35-x64
 
 install:
   - SET PATH=C:\\Python%PYTHON%;c:\\Python%PYTHON%\\scripts;%PATH%
@@ -31,6 +26,8 @@ install:
 
 build: off
 build_script:
+  - echo %PYTHON% | findstr "x64" >nul
+  - IF ERRORLEVEL 0 (call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat") ELSE (call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars32.bat")
   - python -u setup.py clean
   - python -u setup.py build install --use-bundle
   - python -u setup.py bdist_wheel --use-bundle

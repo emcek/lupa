@@ -26,8 +26,9 @@ install:
 
 build: off
 build_script:
-  - cmd: echo %PYTHON% | findstr "x64" >nul
-  - cmd: IF ERRORLEVEL 0 (call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat") ELSE (call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars32.bat")
+  - echo %PYTHON%
+  - echo %PYTHON% | findstr "x64" >nul
+  - IF ERRORLEVEL 0 (call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat") ELSE (call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars32.bat")
   - python -u setup.py clean
   - python -u setup.py build install --use-bundle
   - python -u setup.py bdist_wheel --use-bundle

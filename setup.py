@@ -495,7 +495,7 @@ setup(
     version=VERSION,
     author="Stefan Behnel",
     author_email="stefan_ml@behnel.de",
-    maintainer="Michał Plichta",
+    maintainer="Michal Plichta",
     maintainer_email="mplichta@gmail.com",
     url="https://github.com/scoder/lupa",
 

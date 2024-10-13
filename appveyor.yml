@@ -8,30 +8,30 @@ environment:
     arch: x86
   - python: 313-x64
     arch: x64
-#  - python: 312
-#    arch: x86
-#  - python: 312-x64
-#    arch: x64
-#  - python: 311
-#    arch: x86
-#  - python: 311-x64
-#    arch: x64
-#  - python: 310
-#    arch: x86
-#  - python: 310-x64
-#    arch: x64
-#  - python: 39
-#    arch: x86
-#  - python: 39-x64
-#    arch: x64
-#  - python: 38
-#    arch: x86
-#  - python: 38-x64
-#    arch: x64
-#  - python: 37
-#    arch: x86
-#  - python: 37-x64
-#    arch: x64
+  - python: 312
+    arch: x86
+  - python: 312-x64
+    arch: x64
+  - python: 311
+    arch: x86
+  - python: 311-x64
+    arch: x64
+  - python: 310
+    arch: x86
+  - python: 310-x64
+    arch: x64
+  - python: 39
+    arch: x86
+  - python: 39-x64
+    arch: x64
+  - python: 38
+    arch: x86
+  - python: 38-x64
+    arch: x64
+  - python: 37
+    arch: x86
+  - python: 37-x64
+    arch: x64
 
 install:
   - SET PATH=C:\\Python%PYTHON%;c:\\Python%PYTHON%\\scripts;%PATH%

@@ -491,7 +491,7 @@ cython_dependency = ([
 # call distutils
 
 setup(
-    name="lupa",
+    name="pylupa",
     version=VERSION,
     author="Stefan Behnel",
     author_email="stefan_ml@behnel.de",

@@ -74,6 +74,33 @@ jobs:
       with:
         files: dist/*.tar.gz
 
+#  build_wheels_slow:
+#    name: Build wheels on ${{ matrix.os }}
+#    runs-on: ${{ matrix.os }}
+#    strategy:
+#      matrix:
+#        os: [ubuntu-latest, windows-latest, macos-13, macos-14]
+#
+#    steps:
+#      - uses: actions/checkout@v4
+#
+#      - name: Setup Visual Studio for x64
+#        if: contains(matrix.os, 'windows')
+#        uses: TheMrMilchmann/setup-msvc-dev@v3
+#        with:
+#          arch: x64
+#
+#      - name: Build wheels
+#        uses: pypa/cibuildwheel@v2.21.3
+#        with:
+#          output-dir: wheelhouse_slow
+#
+#      - uses: actions/upload-artifact@v4
+#        with:
+#          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+#          path: ./wheelhouse_slow/*.whl
+
+
   generate-wheels-matrix:
     # Create a matrix of all architectures & versions to build.
     # This enables the next step to run cibuildwheel in parallel.
@@ -86,7 +113,7 @@ jobs:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       - name: Install cibuildwheel
         # Nb. keep cibuildwheel version pin consistent with job below
-        run: pipx install cibuildwheel==2.21.3
+        run: pipx install cibuildwheel==2.16.5
       - id: set-matrix
         run: |
           MATRIX=$(
@@ -143,7 +170,7 @@ jobs:
           arch: x86
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.21.3
+        uses: pypa/cibuildwheel@v2.16.5
         with:
           only: ${{ matrix.only }}
 

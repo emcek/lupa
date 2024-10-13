@@ -287,3 +287,37 @@ jobs:
         name: wheels-${{ matrix.pyversion }}-${{ matrix.os }}
         path: dist/*.whl
         if-no-files-found: ignore
+
+  pypi:
+    needs: [ upload_release_assets ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Set up Python 3.12"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: "Download lupa wheels"
+        uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          pattern: |
+            wheels-*
+
+      - name: "Publish lupa to test PyPI"
+        run: |
+          pip install -U twine
+          mkdir dist
+          mv *.whl *.tar.gz dist/
+          ls -la dist/
+          python -m twine check
+
+      - name: "Deploy to PyPI"
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          user: __token__
+          password: ${{ secrets.PYPI_TOKEN }}
+          skip-existing: true
+          verbose: true
+          print-hash: true

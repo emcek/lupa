@@ -491,12 +491,12 @@ cython_dependency = ([
 # call distutils
 
 setup(
-    name="lupa",
+    name="pylupa-test",
     version=VERSION,
     author="Stefan Behnel",
     author_email="stefan_ml@behnel.de",
-    maintainer="Lupa-dev mailing list",
-    maintainer_email="lupa-dev@freelists.org",
+    maintainer="Michał Plichta",
+    maintainer_email="mplichta@gmail.com",
     url="https://github.com/scoder/lupa",
 
     description="Python wrapper around Lua and LuaJIT",

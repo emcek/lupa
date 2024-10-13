@@ -6,7 +6,7 @@ build-verbosity = 2
 environment = {LUPA_USE_BUNDLE = "true"}
 skip = ["pp*-manylinux_aarch64", "pp*-manylinux_i686", "cp38-macosx_universal2", "cp36-macosx_x86_64"]
 test-skip = ["*-macosx_arm64", "*-macosx_universal2:arm64", "*-macosx_x86_64"]
-test-command = "python -c \"import lupa\" && python -c \"import lupa.lua54\" "
+test-command = "python -c \"import lupa\" && python -c \"import lupa.lua54\" && python -c \"import lupa.luajit21\" "
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64", "aarch64", "i686"]
@@ -26,7 +26,6 @@ environment = {CFLAGS = "-O3 -g1 -pipe -fPIC -flto -march=armv8-a -mtune=cortex-
 
 [tool.cibuildwheel.windows]
 archs = ["AMD64", "x86"]
-test-command = "python -c \"import lupa\" && python -c \"import lupa.lua54\" && python -c \"import lupa.luajit21\" "
 
 [tool.cibuildwheel.macos]
 # https://cibuildwheel.readthedocs.io/en/stable/faq/#what-to-provide suggests to provide

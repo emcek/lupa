@@ -491,12 +491,12 @@ cython_dependency = ([
 # call distutils
 
 setup(
-    name="pylupa",
+    name="pylupa-test",
     version=VERSION,
     author="Stefan Behnel",
     author_email="stefan_ml@behnel.de",
-    maintainer="Lupa-dev mailing list",
-    maintainer_email="lupa-dev@freelists.org",
+    maintainer="Michal Plichta",
+    maintainer_email="mplichta@gmail.com",
     url="https://github.com/scoder/lupa",
 
     description="Python wrapper around Lua and LuaJIT",
@@ -509,10 +509,7 @@ setup(
         'Intended Audience :: Information Technology',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Cython',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
@@ -520,6 +517,7 @@ setup(
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
         'Programming Language :: Lua',
         'Programming Language :: Other Scripting Engines',
         'Operating System :: OS Independent',

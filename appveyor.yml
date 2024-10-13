@@ -43,12 +43,11 @@ build: off
 build_script:
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %ARCH%
   - python -u setup.py clean
-  - python -u setup.py build install --use-bundle
   - python -u setup.py bdist_wheel --use-bundle
 
 test: off
 test_script:
-  - python -u setup.py test
+  - python -u setup.py -q test
 
 artifacts:
   - path: dist/*.whl

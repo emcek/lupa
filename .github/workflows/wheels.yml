@@ -156,7 +156,7 @@ jobs:
 
   make_release:
     name: Make Github release
-    needs: [ build_wheels ]
+    needs: [ upload_release_assets ]
     runs-on: ubuntu-latest
 
     permissions:

@@ -1,15 +1,15 @@
 pyLupa
 ======
-This is a fork of the original **Lupa** project, only for re-packaging reasons.
+This is a fork of the original `Lupa project`_, due to re-packaging reasons.
 All credits go to original author of Lupa: **Stefan Behnel**.
 
-All source code is untouched and as original repository, all issue and PR
-should be submit to `Github Lupa project`_.
+All source code is untouched as in original repository, all issue and PR code
+related should be submit to `Lupa project`_.
 
-With this fork it is possible to take advantage of LuaJIT under Windows,
+With this fork it is possible to take advantage of LuaJIT 2.1 under Windows,
 only one difference is package name:
 
-.. _`Github Lupa project`: https://github.com/scoder/lupa
+.. _`Lupa project`: https://github.com/scoder/lupa
 
 .. code:: python
 

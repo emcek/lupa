@@ -1,5 +1,42 @@
 [build-system]
+build-backend = 'setuptools.build_meta'
 requires = ["Cython>=3.0.9", "setuptools<72.0.0", "wheel"]
+
+[project]
+name = 'pylupa-test'
+authors = [{name = 'Stefan Behnel', email = 'stefan_ml@behnel.de'}]
+maintainers = [{name = 'Michal Plichta'}]
+description = "Python wrapper around Lua and LuaJIT"
+license = {text = 'MIT License'}
+requires-python = '>=3.6'
+readme = 'README.rst'
+version = '2.2.2'
+classifiers = [
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Information Technology',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Cython',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
+        'Programming Language :: Lua',
+        'Programming Language :: Other Scripting Engines',
+        'Operating System :: OS Independent',
+        'Topic :: Software Development',
+]
+
+[project.urls]
+Homepage = 'https://github.com/scoder/lupa'
+Documentation = 'https://github.com/scoder/lupa/README.rst'
+Source = 'https://github.com/scoder/lupa.git'
+Changelog = 'https://github.com/scoder/lupa/CHANGES.rst'
 
 [tool.cibuildwheel]
 build-verbosity = 2

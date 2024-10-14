@@ -3,7 +3,6 @@ image: Visual Studio 2019
 
 environment:
   matrix:
-# todo: Wait untili 3.13 with -rc1 test_attrgetter_refcycle is failing with: AssertionError: 52684 != 52677
   - python: 313
     arch: x86
   - python: 313-x64

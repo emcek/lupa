@@ -502,6 +502,7 @@ setup(
     description="Python wrapper around Lua and LuaJIT",
 
     long_description=long_description,
+    long_description_content_type="text/x-rst",
     license='MIT style',
     classifiers=[
         dev_status(VERSION),

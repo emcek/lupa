@@ -468,7 +468,7 @@ def write_file(filename, content):
 
 long_description = '\n\n'.join([
     read_file(os.path.join(basedir, text_file))
-    for text_file in ['README.rst', 'INSTALL.rst', 'CHANGES.rst', "LICENSE.txt"]])
+    for text_file in ['README.rst', 'INSTALL.rst']])
 
 write_file(os.path.join(basedir, 'lupa', 'version.py'), u"__version__ = '%s'\n" % VERSION)
 
@@ -490,6 +490,13 @@ cython_dependency = ([
 
 # call distutils
 
+PROJECT_URLS = {
+    "Documentation": 'https://github.com/scoder/lupa/README.rst',
+    "Changelog": 'https://github.com/scoder/lupa/CHANGES.rst',
+    "Source": 'https://github.com/scoder/lupa.git',
+    "License": 'https://github.com/scoder/lupa/LICENSE.txt',
+}
+
 setup(
     name="pylupa-test",
     version=VERSION,
@@ -498,7 +505,7 @@ setup(
     maintainer="Michal Plichta",
     maintainer_email="mplichta@gmail.com",
     url="https://github.com/scoder/lupa",
-
+    project_urls=PROJECT_URLS,
     description="Python wrapper around Lua and LuaJIT",
 
     long_description=long_description,

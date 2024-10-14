@@ -185,7 +185,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://test.pypi.org/project/pylupa-test/
     permissions:
       id-token: write
     steps:
@@ -201,5 +200,7 @@ jobs:
           name: sdist
           path: dist
 
-      - name: Publish package distributions to PyPI
+      - name: "Publish package distributions to PyPI"
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/

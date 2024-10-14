@@ -197,11 +197,9 @@ jobs:
       - name: "Publish lupa to test PyPI"
         run: |
           pip install -U twine
-          ls -la
           mkdir dist
           mv *.whl *.tar.gz dist/
-          ls -la dist/
-          python -m twine check
+          python -m twine check dist/*
 
       - name: "Deploy to PyPI"
         uses: pypa/gh-action-pypi-publish@release/v1

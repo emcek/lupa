@@ -1,3 +1,23 @@
+pyLupa
+======
+This is a fork of the original `Lupa project`_, due to re-packaging reasons.
+All credits go to original author of Lupa: **Stefan Behnel**.
+
+All source code is untouched as in original repository, all issue and PR code
+related should be submit to `Lupa project`_.
+
+With this fork it is possible to take advantage of LuaJIT 2.1 under Windows,
+only one difference is package name:
+
+.. _`Lupa project`: https://github.com/scoder/lupa
+
+.. code:: python
+
+    import pylupa.luajit21 as lupa
+
+    print(f"Using {lupa.LuaRuntime().lua_implementation} (compiled with {lupa.LUA_VERSION})")
+
+
 Lupa
 ====
 

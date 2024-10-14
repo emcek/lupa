@@ -3,11 +3,10 @@ image: Visual Studio 2019
 
 environment:
   matrix:
-# todo: Wait untili 3.13 with -rc1 test_attrgetter_refcycle is failing with: AssertionError: 52684 != 52677
-#  - python: 313
-#    arch: x86
-#  - python: 313-x64
-#    arch: x64
+  - python: 313
+    arch: x86
+  - python: 313-x64
+    arch: x64
   - python: 312
     arch: x86
   - python: 312-x64
@@ -43,12 +42,11 @@ build: off
 build_script:
   - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %ARCH%
   - python -u setup.py clean
-  - python -u setup.py build install --use-bundle
   - python -u setup.py bdist_wheel --use-bundle
 
 test: off
 test_script:
-  - python -u setup.py test
+  - python -u setup.py -q test
 
 artifacts:
   - path: dist/*.whl

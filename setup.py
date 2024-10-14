@@ -19,7 +19,7 @@ try:
 except ImportError:
     from distutils.core import setup, Extension
 
-VERSION = '2.2'
+VERSION = '2.4'
 
 extra_setup_args = {}
 
@@ -468,7 +468,7 @@ def write_file(filename, content):
 
 long_description = '\n\n'.join([
     read_file(os.path.join(basedir, text_file))
-    for text_file in ['README.rst', 'INSTALL.rst', 'CHANGES.rst', "LICENSE.txt"]])
+    for text_file in ['README.rst', 'INSTALL.rst']])
 
 write_file(os.path.join(basedir, 'lupa', 'version.py'), u"__version__ = '%s'\n" % VERSION)
 
@@ -490,18 +490,25 @@ cython_dependency = ([
 
 # call distutils
 
+PROJECT_URLS = {
+    "Documentation": 'https://github.com/scoder/lupa/blob/master/README.rst',
+    "Changelog": 'https://github.com/scoder/lupa/blob/master/CHANGES.rst',
+    "Source": 'https://github.com/scoder/lupa.git',
+}
+
 setup(
-    name="lupa",
+    name="pylupa-test",
     version=VERSION,
     author="Stefan Behnel",
     author_email="stefan_ml@behnel.de",
-    maintainer="Lupa-dev mailing list",
-    maintainer_email="lupa-dev@freelists.org",
+    maintainer="Michal Plichta",
+    maintainer_email="mplichta@gmail.com",
     url="https://github.com/scoder/lupa",
-
+    project_urls=PROJECT_URLS,
     description="Python wrapper around Lua and LuaJIT",
 
     long_description=long_description,
+    long_description_content_type="text/x-rst",
     license='MIT style',
     classifiers=[
         dev_status(VERSION),
@@ -509,10 +516,7 @@ setup(
         'Intended Audience :: Information Technology',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Cython',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
@@ -520,6 +524,7 @@ setup(
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
         'Programming Language :: Lua',
         'Programming Language :: Other Scripting Engines',
         'Operating System :: OS Independent',

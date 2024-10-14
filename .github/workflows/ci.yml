@@ -1,6 +1,6 @@
 name: Continuous Integration
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
@@ -12,11 +12,11 @@ jobs:
       matrix:
         os:
           - windows-2019
-          - ubuntu-20.04
-          - macos-12
-          - macos-latest
+#          - ubuntu-20.04
+#          - macos-latest
         python-version:
           - "2.7"
+          - "3.13"
           - "3.12"
           - "3.11"
           - "3.10"
@@ -31,9 +31,9 @@ jobs:
           - "pypy-3.10"
         lua-version:
           - "bundle"
-          - "lua5.3"
-          - "lua5.2"
-          - "luajit-5.1"
+#          - "lua5.3"
+#          - "lua5.2"
+#          - "luajit-5.1"
 
         exclude:
           - os: windows-2019
@@ -49,8 +49,6 @@ jobs:
           - os: windows-2019
             lua-version: luajit-5.1
 
-          - os: macos-12
-            python-version: "2.7"
           - os: macos-latest
             python-version: "2.7"
           - os: macos-latest
@@ -60,14 +58,6 @@ jobs:
           - os: macos-latest
             python-version: pypy-3.7
 
-          - os: macos-12
-            lua-version: lua5.2
-          - os: macos-12
-            lua-version: lua5.3
-          - os: macos-12
-            lua-version: lua5.4
-          - os: macos-12
-            lua-version: luajit-5.1
           - os: macos-latest
             lua-version: lua5.2
           - os: macos-latest
@@ -124,24 +114,16 @@ jobs:
         arch: x64
 
     - name: Build wheel
-      run: python setup.py sdist ${{ contains(matrix.python-version, '3.') && 'build_ext -j6' || '' }} bdist_wheel
+      run: python setup.py ${{ contains(matrix.python-version, '3.') && 'build_ext -j6' || '' }} bdist_wheel
       env:
         SETUP_OPTIONS: ${{ !contains(matrix.lua-version, 'luajit') && (contains(matrix.lua-version, 'bundle') && '--use-bundle' || '--no-luajit') || '' }}
         CFLAGS: ${{ env.CFLAGS }} ${{ env.CFLAGS_LTO }}
         LDFLAGS: ${{ env.CFLAGS_LTO }}
 
     - name: Run tests
-      run: python setup.py test
+      run: python setup.py -q test
       continue-on-error: ${{ contains(matrix.python-version, 'pypy') }}
       env:
         SETUP_OPTIONS: ${{ !contains(matrix.lua-version, 'luajit') && (contains(matrix.lua-version, 'bundle') && '--use-bundle' || '--no-luajit') || '' }}
         CFLAGS: ${{ env.CFLAGS }} ${{ env.CFLAGS_LTO }}
         LDFLAGS: ${{ env.CFLAGS_LTO }}
-
-    - name: Upload wheels
-      if: matrix.lua-version == 'bundle' && matrix.os == 'macos-latest'
-      uses: actions/upload-artifact@v4
-      with:
-        name: wheels-${{ matrix.os }}-${{ matrix.python-version }}
-        path: dist/*.whl
-        if-no-files-found: ignore

@@ -187,13 +187,17 @@ jobs:
       - name: "Download lupa wheels"
         uses: actions/download-artifact@v4
         with:
-          merge-multiple: true
-          pattern: |
-            wheels-*
+          name: wheels
+
+      - name: "Download lupa sdist"
+        uses: actions/download-artifact@v4
+        with:
+          name: sdist
 
       - name: "Publish lupa to test PyPI"
         run: |
           pip install -U twine
+          ls -la
           mkdir dist
           mv *.whl *.tar.gz dist/
           ls -la dist/

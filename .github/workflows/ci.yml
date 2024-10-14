@@ -12,8 +12,9 @@ jobs:
       matrix:
         os:
           - windows-2019
-#          - ubuntu-20.04
-#          - macos-latest
+          - ubuntu-20.04
+          - macos-13
+          - macos-latest
         python-version:
           - "2.7"
           - "3.13"
@@ -31,9 +32,9 @@ jobs:
           - "pypy-3.10"
         lua-version:
           - "bundle"
-#          - "lua5.3"
-#          - "lua5.2"
-#          - "luajit-5.1"
+          - "lua5.3"
+          - "lua5.2"
+          - "luajit-5.1"
 
         exclude:
           - os: windows-2019
@@ -49,6 +50,8 @@ jobs:
           - os: windows-2019
             lua-version: luajit-5.1
 
+          - os: macos-13
+            python-version: "2.7"
           - os: macos-latest
             python-version: "2.7"
           - os: macos-latest

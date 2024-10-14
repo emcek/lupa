@@ -19,7 +19,7 @@ try:
 except ImportError:
     from distutils.core import setup, Extension
 
-VERSION = '2.4'
+VERSION = '2.2'
 
 extra_setup_args = {}
 
@@ -497,7 +497,7 @@ PROJECT_URLS = {
 }
 
 setup(
-    name="pylupa-test",
+    name="lupapy",
     version=VERSION,
     author="Stefan Behnel",
     author_email="stefan_ml@behnel.de",

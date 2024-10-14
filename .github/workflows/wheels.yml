@@ -70,7 +70,11 @@ jobs:
         run: |
           MATRIX=$(
             {
-              cibuildwheel --print-build-identifiers --platform windows \
+              cibuildwheel --print-build-identifiers --platform linux \
+              | jq -nRc '{"only": inputs, "os": "ubuntu-latest"}' \
+              && cibuildwheel --print-build-identifiers --platform macos \
+              | jq -nRc '{"only": inputs, "os": "macos-latest"}' \
+              && cibuildwheel --print-build-identifiers --platform windows \
               | jq -nRc '{"only": inputs, "os": "windows-2019"}'
             } | jq -sc
           )
@@ -158,6 +162,7 @@ jobs:
     name: Make Github release
     needs: [ upload_release_assets ]
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
 
     permissions:
       contents: write  # to create GitHub release (softprops/action-gh-release)
@@ -184,6 +189,7 @@ jobs:
     name: Upload release to PyPI
     needs: [ upload_release_assets ]
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
     environment:
       name: pypi
     permissions:
@@ -201,7 +207,5 @@ jobs:
           name: sdist
           path: dist
 
-      - name: Publish package distributions to PyPI
+      - name: "Publish lupa to test PyPI"
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/

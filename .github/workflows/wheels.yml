@@ -175,11 +175,6 @@ jobs:
           path: ./bdist_downloads/*.whl
           name: wheels
 
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: ./bdist_downloads/*.whl
-
   pypi:
     needs: [ upload_release_assets ]
     runs-on: ubuntu-latest

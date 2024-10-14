@@ -491,10 +491,9 @@ cython_dependency = ([
 # call distutils
 
 PROJECT_URLS = {
-    "Documentation": 'https://github.com/scoder/lupa/README.rst',
-    "Changelog": 'https://github.com/scoder/lupa/CHANGES.rst',
+    "Documentation": 'https://github.com/scoder/lupa/blob/master/README.rst',
+    "Changelog": 'https://github.com/scoder/lupa/blob/master/CHANGES.rst',
     "Source": 'https://github.com/scoder/lupa.git',
-    "License": 'https://github.com/scoder/lupa/LICENSE.txt',
 }
 
 setup(
